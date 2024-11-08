@@ -1,4 +1,4 @@
-package com.ezen.spring.domain.handler;
+package com.ezen.spring.handler;
 
 import java.util.List;
 

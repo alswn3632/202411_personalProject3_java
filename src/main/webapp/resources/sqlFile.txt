@@ -22,28 +22,28 @@ create table comment (
     is_del varchar(5) default 'N'
 );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+--2024-11-09
+--파일(file)추가
 create table file (
 	uuid varchar(255) not null primary key,
 	save_dir varchar(255) not null,
 	file_name varchar(255) not null,
-	file_type tinyint(1) default 0,
 	board_id bigint,
 	file_size bigint,
-	reg_date datetime default now(),
+	reg_date datetime default now()
 );
+
+
+
+
+
+
+
+
+
+
+
+
 
 create table user (
     id bigint auto_increment primary key,   

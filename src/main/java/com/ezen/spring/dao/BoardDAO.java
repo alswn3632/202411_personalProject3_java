@@ -13,13 +13,15 @@ public interface BoardDAO {
 
 	List<BoardVO> getList(PagingVO pgvo);
 	
-	BoardVO getDetail(int id);
+	BoardVO getDetail(long id);
 
 	int update(BoardVO bvo);
 
-	int delete(int id);
+	int delete(long id);
 
 	int getTotal(PagingVO pgvo);
+
+	long getLastId();
 
 
 }

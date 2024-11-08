@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.ezen.spring.domain.CommentVO;
 import com.ezen.spring.domain.PagingVO;
-import com.ezen.spring.domain.handler.PagingHandler;
+import com.ezen.spring.handler.PagingHandler;
 
 public interface CommentService {
 

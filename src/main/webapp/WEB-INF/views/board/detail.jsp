@@ -8,11 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- 변수 간단하게 설정 -->
+	<c:set value="${bdto.bvo }" var="bvo"></c:set>
+	<c:set value="${bdto.flist }" var="flist"></c:set>
+	
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 		
 	<div class="container-md">
 		<h3>User Detail Page!!</h3>
 		<hr>
+		<!-- Board Detail Line -->
 		<div class="mb-3">
 			<label for="n" class="form-label">no</label>
 			<span class="badge rounded-pill text-bg-primary">${bvo.regDate }</span>
@@ -30,6 +35,22 @@
 			<label for="c" class="form-label">content</label>
 			<textarea class="form-control" name="content" id="c" rows="3" readonly>${bvo.content }</textarea>
 		</div>
+		
+		<!-- file upload 표시 라인 -->
+		<div class="mb-3">
+			<ul class="list-group list-group-flush">
+				<!-- 파일의 개수만큼 li를 반복하여 파일 표시 타입이 1인 경우만 크림으로 표시 -->
+				<c:forEach items="${flist }" var="fvo">
+					<li class="list-group-item">
+						<div>
+							<img alt="" src="/upload/${fvo.saveDir }/${fvo.uuid}_${fvo.fileName}" style="max-width: 300px; height: auto;">
+							<div class="fw-bold">${fvo.fileName }</div>
+						</div>
+					</li>
+				</c:forEach>
+			</ul>
+		</div>		
+			
 		<a href="/board/modify?id=${bvo.id }"><button type="button" class="btn btn-primary">수정</button></a>
 		<a href="/board/delete?id=${bvo.id }"><button type="button" class="btn btn-primary">삭제</button></a>
 		

@@ -7,6 +7,10 @@
 	<insert id="insert">
 		insert into board(title, content, writer, user_id) values(#{title}, #{content}, #{writer}, #{userId})
 	</insert>
+	
+	<select id="getLastId" resultType="long">
+		select max(id) from board
+	</select>
 
 	<select id="getList" resultType="com.ezen.spring.domain.BoardVO">
 		select * from board where is_del = 'N' 

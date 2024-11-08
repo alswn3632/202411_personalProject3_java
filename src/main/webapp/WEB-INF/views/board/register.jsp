@@ -13,7 +13,7 @@
 	<div class="container-md">
 		<h3>User Register Page!!</h3>
 		<hr>
-		<form action="/board/insert" method="post">
+		<form action="/board/insert" method="post" enctype="multipart/form-data">
 			<div class="mb-3">
 				<label for="t" class="form-label">제목</label>
 				<input type="text" class="form-control" name="title" id="t" placeholder="title..">
@@ -27,10 +27,23 @@
 				<label for="t" class="form-label">내용</label>
 				<input type="text" class="form-control" name="content" id="t" placeholder="content..">
 			</div>
+			
+			<!-- 첨부파일 입력 라인 추가 -->
+			<div class="mb-3">
+				<input type="file" class="form-control" name="files" id="file" multiple="multiple" style="display:none" accept="image/*">
+				<label class="input-group-text" for="file" style="display:none"></label>
+			    <button type="button" class="btn btn-primary" id="trigger">파일 업로드</button>
+			</div>
+			<!-- 첨부파일 표시 라인 추가 -->
+			<div class="mb-3" id="fileZone"></div>
+			
 			<button type="submit" class="btn btn-primary" id="regBtn">등록</button>
 		</form>		
 	</div>
 		
 	<jsp:include page="../layout/footer.jsp"></jsp:include>
+	
+	<!-- Script Line -->
+	<script type="text/javascript" src="/resources/js/boardRegister.js"></script>
 </body>
 </html>

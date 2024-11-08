@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ezen.spring.domain.CommentVO;
 import com.ezen.spring.domain.PagingVO;
-import com.ezen.spring.domain.handler.PagingHandler;
+import com.ezen.spring.handler.PagingHandler;
 import com.ezen.spring.service.CommentService;
 
 import lombok.RequiredArgsConstructor;

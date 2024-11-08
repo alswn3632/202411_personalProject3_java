@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.ezen.spring.dao.CommentDAO;
 import com.ezen.spring.domain.CommentVO;
 import com.ezen.spring.domain.PagingVO;
-import com.ezen.spring.domain.handler.PagingHandler;
+import com.ezen.spring.handler.PagingHandler;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

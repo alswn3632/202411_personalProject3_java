@@ -2,12 +2,13 @@ package com.ezen.spring.service;
 
 import java.util.List;
 
+import com.ezen.spring.domain.BoardDTO;
 import com.ezen.spring.domain.BoardVO;
 import com.ezen.spring.domain.PagingVO;
 
 public interface BoardService {
 
-	int insert(BoardVO bvo);
+	int insert(BoardDTO bdto);
 
 //	List<BoardVO> getList();
 
@@ -15,11 +16,13 @@ public interface BoardService {
 	
 	int getTotal(PagingVO pgvo);
 	
-	BoardVO getDetail(int id);
+	BoardDTO getDetail(long id);
 
-	int update(BoardVO bvo);
+	int update(BoardDTO boardDTO);
 
-	int delete(int id);
+	int delete(long id);
+
+	int deleteFile(String uuid);
 
 
 
