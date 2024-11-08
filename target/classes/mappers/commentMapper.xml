@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.spring.dao.CommentDAO">
+	
+	<insert id="post">
+		insert into comment(board_id, user_id, writer, content) values(#{boardId}, #{userId}, #{writer}, #{content})
+	</insert>
+	
+	<insert id="postAns">
+		insert into comment(board_id, user_id, writer, content, parent_id) values(#{boardId}, #{userId}, #{writer}, #{content}, #{parentId})
+	</insert>
+	
+	<select id="getList" resultType="com.ezen.spring.domain.CommentVO">
+	    select * from comment 
+	    where board_id = #{boardId} 
+	    and parent_id is null 
+	    and is_del = 'N' 
+	    order by id desc
+	    limit #{pgvo.pageStart}, #{pgvo.qty}
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(id) from comment where board_id = #{boardId} and parent_id is null and is_del = 'N'
+	</select>
+	
+	<update id="modify">
+		update comment set content = #{content} where id = #{id}
+	</update>
+	
+	<update id="delete">
+		update comment set is_del = 'Y' where id = #{id}
+	</update>
+	
+	<select id="getListAns" resultType="com.ezen.spring.domain.CommentVO">
+		select * from comment where parent_id = #{cno} and is_del = 'N' order by id asc
+	</select>
+
+</mapper>

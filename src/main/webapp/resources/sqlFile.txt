@@ -1,13 +1,39 @@
---2024-11-06
+--2024-11-08
+--게시판(board)추가
+--has_file, qty_cmt, readCount 칼럼 추후 추가할 예정
 create table board (
     id bigint auto_increment primary key,   
     title varchar(255) not null,           
-    content text not null,                                
+    content text not null, 
+    writer varchar(100) not null,                               
     user_id bigint,                      
-    has_file char(1) default 'N',                  
     reg_date datetime default now(),
     is_del varchar(5) default 'N' 
 );
+--댓글(comment)추가
+create table comment (
+    id bigint auto_increment primary key,    
+    board_id bigint,   
+    user_id bigint,       
+    writer varchar(100) not null,                                                      
+    content text not null,               
+    parent_id bigint,                
+    reg_date datetime default now(),
+    is_del varchar(5) default 'N'
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 create table file (
 	uuid varchar(255) not null primary key,
@@ -17,16 +43,6 @@ create table file (
 	board_id bigint,
 	file_size bigint,
 	reg_date datetime default now(),
-);
-
-create table comment (
-    id bigint auto_increment primary key,    
-    board_id bigint,                          
-    user_id bigint,                   
-    content text not null,               
-    parent_id bigint,                
-    reg_date datetime default now(),
-    is_del varchar(5) default 'N'
 );
 
 create table user (
