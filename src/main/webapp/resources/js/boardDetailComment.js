@@ -150,7 +150,7 @@ document.addEventListener('click', (e)=>{
     }
 
     if(e.target.id == 'moreBtn'){
-        let page = e.target.dataset.page;
+        let page = parseInt(e.target.dataset.page);
         spreadCommentList(bno, page);
     }
 

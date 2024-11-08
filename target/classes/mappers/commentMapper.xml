@@ -13,16 +13,12 @@
 	</insert>
 	
 	<select id="getList" resultType="com.ezen.spring.domain.CommentVO">
-	    select * from comment 
-	    where board_id = #{boardId} 
-	    and parent_id is null 
-	    and is_del = 'N' 
-	    order by id desc
-	    limit #{pgvo.pageStart}, #{pgvo.qty}
+	    select * from comment where board_id = #{boardId} and parent_id is null 
+	    order by id desc limit #{pgvo.pageStart}, #{pgvo.qty}
 	</select>
 	
 	<select id="getTotalCount" resultType="int">
-		select count(id) from comment where board_id = #{boardId} and parent_id is null and is_del = 'N'
+		select count(id) from comment where board_id = #{boardId} and parent_id is null
 	</select>
 	
 	<update id="modify">
@@ -34,7 +30,7 @@
 	</update>
 	
 	<select id="getListAns" resultType="com.ezen.spring.domain.CommentVO">
-		select * from comment where parent_id = #{cno} and is_del = 'N' order by id asc
+		select * from comment where parent_id = #{cno} order by id asc
 	</select>
 
 </mapper>

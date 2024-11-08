@@ -39,6 +39,12 @@ public class CommentServiceImpl implements CommentService{
 	public PagingHandler getList(long boardId, PagingVO pgvo) {
 		// ph 객체 안에 cmtList, TotalCount 구하기
 		List<CommentVO> cmtList = cdao.getList(boardId, pgvo);
+		for(CommentVO cvo : cmtList) {
+			if(cvo.getIsDel().equals("Y")) {
+				cvo.setContent("삭제된 댓글 입니다.");
+				cvo.setWriter("알수없음");
+			}
+		}
 		int totalCount = cdao.getTotalCount(boardId);
 		PagingHandler ph = new PagingHandler(totalCount, pgvo, cmtList);
 		return ph;
@@ -59,7 +65,14 @@ public class CommentServiceImpl implements CommentService{
 	@Override
 	public List<CommentVO> getListAns(long cno) {
 		// TODO Auto-generated method stub
-		return cdao.getListAns(cno);
+		List<CommentVO> cmtList = cdao.getListAns(cno);
+		for(CommentVO cvo : cmtList) {
+			if(cvo.getIsDel().equals("Y")) {
+				cvo.setContent("삭제된 댓글 입니다.");
+				cvo.setWriter("알수없음");
+			}
+		}
+		return cmtList;
 	}
 
 }
