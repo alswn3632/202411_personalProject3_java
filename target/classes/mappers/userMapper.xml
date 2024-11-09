@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.spring.dao.UserDAO">
+	<!-- user 테이블 -->
+	<insert id="register">
+		insert into user(username, password, email, nickname) values(#{username}, #{password}, #{email}, #{nickname})
+	</insert>
+	
+	<select id="getLastId" resultType="long">
+		select max(id) from user
+	</select>
+	
+	<select id="selectName" resultType="com.ezen.spring.domain.UserVO">
+		select * from user where username = #{username}
+	</select>
+	
+	<update id="updateLastLogin">
+		update user set log_date = now() where username = #{username}
+	</update>
+	
+	
+	<!-- auth 테이블 -->
+	<insert id="registerAuthInit">
+		insert into auth(user_id, auth) values(#{uno}, 'ROLE_USER')
+	</insert>
+	
+	<select id="selectAuths" resultType="com.ezen.spring.domain.AuthVO">
+		select a.* from user u join auth a on u.id = a.user_id where u.username = #{username};
+	</select>
+		
+</mapper>

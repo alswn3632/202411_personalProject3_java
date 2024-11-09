@@ -25,10 +25,29 @@
 			      		<li class="nav-item">
 			    	  		<a class="nav-link" href="/board/list">게시판</a>
 			      		</li>
-			      		<li class="nav-item">
-			    	  		<a class="nav-link" href="/board/register">글쓰기</a>
-			      		</li>
-
+						<sec:authorize access="isAnonymous()">
+						    <!-- 인증 객체 x 로그인전 = 권한이 없을 때 -->
+						    <li class="nav-item">
+						        <a class="nav-link" href="/user/register">회원가입</a>
+						    </li>
+						    <li class="nav-item">
+						        <a class="nav-link" href="/user/login">로그인</a>
+						    </li>		        
+						</sec:authorize>
+						<sec:authorize access="isAuthenticated()">
+						    <!-- 인증 객체가 만들어져 있는 상태 -->	
+						    <!-- 인증된 객체 가져오기 => 현재 로그인 정보는 principal에 들어가 있음 -->
+						    <sec:authentication property="principal.uvo.nickname" var="authnick"/>		
+						    <li class="nav-item">
+						        <a class="nav-link" href="/board/register">글 쓰기</a>
+						    </li>
+						    <li class="nav-item">
+						       <a class="nav-link" href="#">${authnick }님 </a>
+						    </li>
+						    <li class="nav-item">
+						        <a class="nav-link" href="/user/logout">로그아웃 </a>
+						    </li>
+						</sec:authorize>
 		      		</ul>
 		    	</div>
 		  </div>

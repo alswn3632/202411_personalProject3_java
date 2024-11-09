@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.spring.dao.LikesDAO">
+
+	<select id="isLike" resultType="int">
+	    select count(*) from likes where board_id = #{bno} and user_id = #{uno}
+	</select>
+	
+	<insert id="regLike">
+		insert into likes(board_id, user_id) values(#{bno}, #{uno})
+	</insert>
+	
+	<delete id="delLike">
+		delete from likes where board_id = #{bno} and user_id = #{uno}
+	</delete>
+
+</mapper>

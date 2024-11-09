@@ -33,41 +33,45 @@ create table file (
 	reg_date datetime default now()
 );
 
-
-
-
-
-
-
-
-
-
-
-
-
+--2024-11-09
+--유저(user)추가
 create table user (
     id bigint auto_increment primary key,   
-    username varchar(100) not null unique,
+    username varchar(100) not null,
     password varchar(255) not null,       
     email varchar(255),     
     nickname varchar(100),            
     reg_date datetime default now(),
 	log_date datetime default now()
 );
-
+--권한(auth)추가
 create table auth (
 	id bigint auto_increment primary key,
 	user_id bigint not null,
 	auth varchar(100) not null
 );
-
-
-create table like (
+--좋아요(likes)추가
+create table likes (
     id bigint auto_increment primary key, 
     board_id bigint,                         
-    user_id bigint,                        
-    unique(board_id, user_id)
+    user_id bigint
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 create table report (
     id bigint auto_increment primary key,    

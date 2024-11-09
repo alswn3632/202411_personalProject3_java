@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,22 @@
 	<!-- 변수 간단하게 설정 -->
 	<c:set value="${bdto.bvo }" var="bvo"></c:set>
 	<c:set value="${bdto.flist }" var="flist"></c:set>
-	
+		
+	<!-- 로그인 상태 확인하기 -->
+	<script type="text/javascript">
+		let uno = -1;
+		let nickname = "";
+	</script>
+	<sec:authorize access="isAuthenticated()">
+		<sec:authentication property="principal.uvo.id" var="authid"/>
+		<sec:authentication property="principal.uvo.nickname" var="authnick"/>
+		<script type="text/javascript">
+			uno = "${authid }";
+			nickname = "${authnick}";
+			
+			console.log(nickname + uno);
+		</script>
+	</sec:authorize>
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 		
 	<div class="container-md">
@@ -36,6 +52,9 @@
 			<textarea class="form-control" name="content" id="c" rows="3" readonly>${bvo.content }</textarea>
 		</div>
 		
+		<!-- 좋아요 버튼 -->
+		<button type="button" class="btn btn-outline-danger likeBtn" id="likeBtn">추천</button>
+		
 		<!-- file upload 표시 라인 -->
 		<div class="mb-3">
 			<ul class="list-group list-group-flush">
@@ -50,7 +69,7 @@
 				</c:forEach>
 			</ul>
 		</div>		
-			
+		
 		<a href="/board/modify?id=${bvo.id }"><button type="button" class="btn btn-primary">수정</button></a>
 		<a href="/board/delete?id=${bvo.id }"><button type="button" class="btn btn-primary">삭제</button></a>
 		
@@ -58,11 +77,15 @@
 		<!-- Comment Post -->
 		<hr>
 		<br>
-		<div class="input-group mb-3">
-			<span class="input-group-text" id="cmtWriter">테스터</span>
-			<input type="text" class="form-control" id="cmtText" placeholder="Add Comment..." aria-label="Username" aria-describedby="basic-addon1">
-			<button class="btn btn-outline-secondary" id="cmtAddBtn" type="button">등록</button>
-		</div>
+		<sec:authorize access="isAuthenticated()">
+			<sec:authentication property="principal.uvo.nickname" var="authnick"/>
+			<div class="input-group mb-3">
+				<span class="input-group-text" id="cmtWriter">${authnick }</span>
+				<input type="text" class="form-control" id="cmtText" placeholder="Add Comment..." aria-label="Username" aria-describedby="basic-addon1">
+				<button class="btn btn-outline-secondary addBtn1" id="cmtAddBtn" type="button">등록</button>
+			</div>
+		</sec:authorize>
+		
 		<!-- Comment Print -->
 		<ul class="list-group list-group-flush" id="cmtListArea">
 			<!-- Js로 출력할 부분 -->
@@ -97,10 +120,11 @@
 	<!-- Script Line -->
 	<script type="text/javascript">
 		let bno = "${bvo.id }";
-		let uno = 1;
 	</script>
+	<script type="text/javascript" src="/resources/js/boardDetailLike.js"></script>
 	<script type="text/javascript" src="/resources/js/boardDetailComment.js"></script>
 	<script type="text/javascript">
+		printLikeBox(bno, uno);
 		spreadCommentList(bno);
 	</script>
 </body>

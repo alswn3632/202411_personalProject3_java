@@ -24,6 +24,12 @@ public interface BoardService {
 
 	int deleteFile(String uuid);
 
+	int isLike(long bno, long uno);
+
+	int regLike(long bno, long uno);
+
+	int delLike(long bno, long uno);
+
 
 
 }

@@ -114,4 +114,28 @@ public class BoardController {
 		
 		return isOk>0? "1" : "0";
 	}
+	
+	@ResponseBody
+	@GetMapping(value="/isLike/{bno}/{uno}")
+	public String isLike(@PathVariable("bno") long bno, @PathVariable("uno") long uno) {
+		log.info(">>>> bno, uno > {},{}", bno, uno);
+		int isOk = bsv.isLike(bno, uno);
+		return isOk>0? "1" : "0";
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/regLike/{bno}/{uno}")
+	public String regLike(@PathVariable("bno") long bno, @PathVariable("uno") long uno) {
+		int isOk = bsv.regLike(bno, uno);
+		return isOk>0? "1" : "0";
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/delLike/{bno}/{uno}")
+	public String delLike(@PathVariable("bno") long bno, @PathVariable("uno") long uno) {
+		int isOk = bsv.delLike(bno, uno);
+		return isOk>0? "1" : "0";
+	}
+	
+	
 }

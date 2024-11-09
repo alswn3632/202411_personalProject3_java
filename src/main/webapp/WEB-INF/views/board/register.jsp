@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<sec:authentication property="principal.uvo.nickname" var="authnick"/>		
+	<sec:authentication property="principal.uvo.id" var="authid"/>		
+	
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 		
 	<div class="container-md">
@@ -20,8 +24,8 @@
 			</div>
 			<div class="mb-3">
 				<label for="t" class="form-label">작성자</label>
-				<input type="text" class="form-control" name="writer" id="t" placeholder="writer..">
-				<input type="hidden" class="form-control" name="userId" value=1 >
+				<input type="text" class="form-control" name="writer" id="t" value="${authnick }" readonly>
+				<input type="hidden" class="form-control" name="userId" value="${authid }" >
 			</div>
 			<div class="mb-3">
 				<label for="t" class="form-label">내용</label>

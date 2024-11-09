@@ -1,31 +1,31 @@
 // Detail 페이지 
 console.log("boardDetailComment.js in!!");
 console.log("boardId:" + bno + ", userId:" + uno);
-
+// 연동되어랏
 // JSP 댓글 등록 이벤트
-document.getElementById('cmtAddBtn').addEventListener('click', ()=>{
-    const cmtText = document.getElementById('cmtText');
-    const cmtWriter = document.getElementById('cmtWriter');
-    if(cmtText.value == null || cmtText.value == ''){
-        alert('댓글을 입력해주세요!');
-        cmtText.focus();
-        return false;
-    }
-    let cmtData = {
-        boardId : bno,
-        userId : uno,
-        writer : cmtWriter.innerText,
-        content : cmtText.value
-    }
-    postCommentToServer(cmtData).then(result =>{
-        if(result == '1'){
-            alert("댓글 등록 성공");
-            cmtText.value = "";
-            // 댓글 출력
-            spreadCommentList(bno)
-        }
-    })
-});
+// document.getElementById('cmtAddBtn').addEventListener('click', ()=>{
+//     const cmtText = document.getElementById('cmtText');
+//     const cmtWriter = document.getElementById('cmtWriter');
+//     if(cmtText.value == null || cmtText.value == ''){
+//         alert('댓글을 입력해주세요!');
+//         cmtText.focus();
+//         return false;
+//     }
+//     let cmtData = {
+//         boardId : bno,
+//         userId : uno,
+//         writer : cmtWriter.innerText,
+//         content : cmtText.value
+//     }
+//     postCommentToServer(cmtData).then(result =>{
+//         if(result == '1'){
+//             alert("댓글 등록 성공");
+//             cmtText.value = "";
+//             // 댓글 출력
+//             spreadCommentList(bno)
+//         }
+//     })
+// });
 
 // JSP 댓글 출력 함수
 function spreadCommentList(bno, page=1){
@@ -164,13 +164,36 @@ document.addEventListener('click', (e)=>{
             let str = "";
             str += `<span class="input-group-text" id="cmtWriter2">테스터</span>`;
             str += `<input type="text" class="form-control" id="cmtText2" placeholder="Add Comment..." aria-label="Username" aria-describedby="basic-addon1">`;
-            str += `<button class="btn btn-outline-secondary addBtn" type="button" data-id=${id}>등록</button>`; 
+            str += `<button class="btn btn-outline-secondary addBtn2" type="button" data-id=${id}>등록</button>`; 
             div.innerHTML = str;
         }
     }
-
+    // 댓글 등록 버튼
+    if(e.target.classList.contains('addBtn1')){
+        const cmtText = document.getElementById('cmtText');
+        const cmtWriter = document.getElementById('cmtWriter');
+        if(cmtText.value == null || cmtText.value == ''){
+            alert('댓글을 입력해주세요!');
+            cmtText.focus();
+            return false;
+        }
+        let cmtData = {
+            boardId : bno,
+            userId : uno,
+            writer : cmtWriter.innerText,
+            content : cmtText.value
+        }
+        postCommentToServer(cmtData).then(result =>{
+            if(result == '1'){
+                alert("댓글 등록 성공");
+                cmtText.value = "";
+                // 댓글 출력
+                spreadCommentList(bno)
+            }
+        });
+    }
     // 답글 버튼 등록
-    if(e.target.classList.contains('addBtn')){
+    if(e.target.classList.contains('addBtn2')){
         const cmtText = document.getElementById('cmtText2');
         const cmtWriter = document.getElementById('cmtWriter2');
         const cmtParent = parseInt(e.target.dataset.id);

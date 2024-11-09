@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ezen.spring.dao.BoardDAO;
 import com.ezen.spring.dao.FileDAO;
+import com.ezen.spring.dao.LikesDAO;
 import com.ezen.spring.domain.BoardDTO;
 import com.ezen.spring.domain.BoardVO;
 import com.ezen.spring.domain.FileVO;
@@ -22,6 +23,7 @@ public class BoardServiceImpl implements BoardService{
 	
 	private final BoardDAO bdao;
 	private final FileDAO fdao;
+	private final LikesDAO ldao;
 
 	@Transactional
 	@Override
@@ -116,6 +118,24 @@ public class BoardServiceImpl implements BoardService{
 			}
 		}
 		return isOk;
+	}
+
+	@Override
+	public int isLike(long bno, long uno) {
+		// TODO Auto-generated method stub
+		return ldao.isLike(bno, uno);
+	}
+
+	@Override
+	public int regLike(long bno, long uno) {
+		// TODO Auto-generated method stub
+		return ldao.regLike(bno, uno);
+	}
+
+	@Override
+	public int delLike(long bno, long uno) {
+		// TODO Auto-generated method stub
+		return ldao.delLike(bno, uno);
 	}
 
 }
