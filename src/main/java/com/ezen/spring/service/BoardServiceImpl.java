@@ -45,6 +45,7 @@ public class BoardServiceImpl implements BoardService{
 				fvo.setBoardId(bno);
 				// 하나라도 실패하면 롤백
 				isOk *= fdao.insertFile(fvo);
+				isOk *= bdao.updateFileQty(bno, 1);
 			}
 			// 4. 등록한 파일 개수만큼 업데이트
 			// isOk *= fdao.countUp(bdto.getBvo().getId());
@@ -96,10 +97,14 @@ public class BoardServiceImpl implements BoardService{
 		return bdao.delete(id);
 	}
 
+	@Transactional
 	@Override
-	public int deleteFile(String uuid) {
-		// TODO Auto-generated method stub
-		return fdao.deleteFile(uuid);
+	public int deleteFile(String uuid, long bno) {
+		int isOk = bdao.updateFileQty(bno, -1);
+		if(isOk>0) {
+			isOk *= fdao.deleteFile(uuid);
+		}
+		return isOk;
 	}
 
 	@Transactional
@@ -113,8 +118,10 @@ public class BoardServiceImpl implements BoardService{
 		
 		if(isOk>0 && boardDTO.getFlist().size()>0) {
 			for(FileVO fvo : boardDTO.getFlist()) {
-				fvo.setBoardId(boardDTO.getBvo().getId());
+				long bno = boardDTO.getBvo().getId();
+				fvo.setBoardId(bno);
 				isOk *= fdao.insertFile(fvo);
+				isOk *= bdao.updateFileQty(bno, 1);
 			}
 		}
 		return isOk;
@@ -126,16 +133,24 @@ public class BoardServiceImpl implements BoardService{
 		return ldao.isLike(bno, uno);
 	}
 
+	@Transactional
 	@Override
 	public int regLike(long bno, long uno) {
-		// TODO Auto-generated method stub
-		return ldao.regLike(bno, uno);
+		int isOk = ldao.regLike(bno, uno);
+		if(isOk>0) {
+			isOk *= bdao.updateLikeQty(bno, 1);
+		}
+		return isOk;
 	}
 
+	@Transactional
 	@Override
 	public int delLike(long bno, long uno) {
-		// TODO Auto-generated method stub
-		return ldao.delLike(bno, uno);
+		int isOk = ldao.delLike(bno, uno);
+		if(isOk>0) {
+			isOk *= bdao.updateLikeQty(bno, -1);
+		}
+		return isOk;
 	}
 
 }

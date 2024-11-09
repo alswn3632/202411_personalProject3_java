@@ -32,5 +32,5 @@
 	<select id="getListAns" resultType="com.ezen.spring.domain.CommentVO">
 		select * from comment where parent_id = #{cno} order by id asc
 	</select>
-
+	
 </mapper>

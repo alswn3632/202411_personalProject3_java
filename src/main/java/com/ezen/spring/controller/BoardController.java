@@ -104,11 +104,11 @@ public class BoardController {
 	}
 	
 	@ResponseBody
-	@DeleteMapping(value="/file/{uuid}")
-	public String fileDelete(@PathVariable("uuid") String uuid) {
+	@DeleteMapping(value="/file/{uuid}/{bno}")
+	public String fileDelete(@PathVariable("uuid") String uuid, @PathVariable("bno") long bno) {
 		log.info(">>>> uuid > {}", uuid);
 		// file table 데이터 삭제
-		int isOk = bsv.deleteFile(uuid);
+		int isOk = bsv.deleteFile(uuid, bno);
 		log.info(">>>> delete uuid > {}", (isOk>0? "성공" : "실패"));
 		// 실제 폴더 내 파일 삭제
 		

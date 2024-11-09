@@ -58,9 +58,9 @@ public class CommentController {
 	}
 	
 	@ResponseBody
-	@DeleteMapping(value="/{id}")
-	public String delete(@PathVariable("id") long id) {
-		int isOk = csv.delete(id);
+	@DeleteMapping(value="/{id}/{bno}")
+	public String delete(@PathVariable("id") long id, @PathVariable("bno") long bno) {
+		int isOk = csv.delete(id, bno);
 		return isOk>0? "1" : "0";
 	}
 	

@@ -35,6 +35,18 @@
 		<include refid="search"></include>
 	</select>
 	
+	<update id="updateCommQty">
+		update board set comm_qty = comm_qty + #{i} where id = #{bno}
+	</update>
+	
+	<update id="updateFileQty">
+		update board set has_file = has_file + #{i} where id = #{bno}
+	</update>
+	
+	<update id="updateLikeQty">
+		update board set like_qty = like_qty + #{i} where id = #{bno}
+	</update>
+	
 	<!-- search 동적 쿼리 -->
 	<sql id="search">
 		<if test="type != null">

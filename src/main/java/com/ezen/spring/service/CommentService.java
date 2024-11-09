@@ -16,7 +16,7 @@ public interface CommentService {
 	
 	int modify(CommentVO cvo);
 
-	int delete(long id);
+	int delete(long id, long bno);
 
 	List<CommentVO> getListAns(long cno);
 

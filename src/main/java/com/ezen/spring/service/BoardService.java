@@ -22,7 +22,7 @@ public interface BoardService {
 
 	int delete(long id);
 
-	int deleteFile(String uuid);
+	int deleteFile(String uuid, long bno);
 
 	int isLike(long bno, long uno);
 

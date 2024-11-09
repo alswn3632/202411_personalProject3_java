@@ -22,6 +22,10 @@ public class BoardVO {
 	    reg_date datetime default now(),
 	    is_del varchar(5) default 'N' 
 	); 
+	alter table board add comm_qty bigint default 0;
+	alter table board add like_qty bigint default 0;
+	alter table board add read_qty bigint default 0;
+	alter table board add has_file int default 0;
 	 */
 	
 	private long id;
@@ -31,5 +35,9 @@ public class BoardVO {
 	private long userId;
 	private String regDate;
 	private String isDel;
+	private long commQty;
+	private long likeQty;
+	private long readQty;
+	private int hasFile;
 	
 }

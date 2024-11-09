@@ -21,7 +21,7 @@ document.addEventListener('click', (e)=>{
 
 async function deleteFileFromServer(uuid) {
     try {
-        const url = "/board/file/" + uuid;
+        const url = "/board/file/" + uuid + "/" + bno;
         const config = {
             method : 'delete'
         };

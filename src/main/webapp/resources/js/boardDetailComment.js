@@ -287,7 +287,7 @@ async function updateCommentToServer(cmtData) {
 // 비동기 요청 : 댓글 삭제
 async function removeCommentToServer(id) {
     try {
-        const url = "/comment/" + id;
+        const url = "/comment/" + id + "/" + bno;
         const config = {
             method : 'delete'
         };

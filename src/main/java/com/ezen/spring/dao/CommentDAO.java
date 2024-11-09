@@ -26,5 +26,4 @@ public interface CommentDAO {
 	List<CommentVO> getListAns(long cno);
 
 
-
 }

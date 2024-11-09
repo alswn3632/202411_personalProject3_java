@@ -3,7 +3,9 @@ package com.ezen.spring.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.ezen.spring.dao.BoardDAO;
 import com.ezen.spring.dao.CommentDAO;
 import com.ezen.spring.domain.CommentVO;
 import com.ezen.spring.domain.PagingVO;
@@ -18,15 +20,24 @@ import lombok.extern.slf4j.Slf4j;
 public class CommentServiceImpl implements CommentService{
 	
 	private final CommentDAO cdao;
+	private final BoardDAO bdao;
 
+	@Transactional
 	@Override
 	public int post(CommentVO cvo) {
 		// TODO Auto-generated method stub
+		int isOk = 1;
 		if(cvo.getParentId() != 0) {
-			return cdao.postAns(cvo);
+			isOk *= cdao.postAns(cvo);
 		}else {
-			return cdao.post(cvo);
+			isOk *= cdao.post(cvo);
 		}
+		
+		if(isOk>0) {
+			long bno = cvo.getBoardId();
+			isOk *= bdao.updateCommQty(bno, 1);
+		}
+		return isOk;
 	}
 
 //	@Override
@@ -56,10 +67,11 @@ public class CommentServiceImpl implements CommentService{
 		return cdao.modify(cvo);
 	}
 
+	@Transactional
 	@Override
-	public int delete(long id) {
-		// TODO Auto-generated method stub
-		return cdao.delete(id);
+	public int delete(long id, long bno) {
+		int isOk = cdao.delete(id);
+		return isOk;
 	}
 
 	@Override

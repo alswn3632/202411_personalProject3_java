@@ -22,6 +22,7 @@ create table comment (
     is_del varchar(5) default 'N'
 );
 
+
 --2024-11-09
 --파일(file)추가
 create table file (
@@ -32,6 +33,7 @@ create table file (
 	file_size bigint,
 	reg_date datetime default now()
 );
+
 
 --2024-11-09
 --유저(user)추가
@@ -56,12 +58,25 @@ create table likes (
     board_id bigint,                         
     user_id bigint
 );
+--좋아요(likes)테이블에서id칼럼제거(불필요,데이터낭비)
+alter table likes drop column id;
 
 
+--2024-11-10
+--게시판(board)에파일여부,조회수,추천수,댓글수칼럼추가
+alter table board add comm_qty bigint default 0;
+alter table board add like_qty bigint default 0;
+alter table board add read_qty bigint default 0;
+alter table board add has_file int default 0;
 
+-- comm_qty 업데이트: comment 테이블과 JOIN하여 계산
+update board b join (select board_id, count(*) as comm_qty from comment group by board_id) c on b.id = c.board_id set b.comm_qty = c.comm_qty;
 
+-- has_file 업데이트: file 테이블과 JOIN하여 계산
+update board b join (select board_id, count(*) as has_file from file group by board_id) f on b.id = f.board_id set b.has_file = f.has_file;
 
-
+-- like_qty 업데이트: likes 테이블과 JOIN하여 계산
+update board b join (select board_id, count(*) as like_qty from likes group by board_id) l on b.id = l.board_id set b.like_qty = l.like_qty;
 
 
 
@@ -79,8 +94,7 @@ create table report (
     user_id bigint not null,               
     reason text not null,          
     reg_date datetime default now(),
-    status varchar(20) default 'pending',    
-	unique(board_id, user_id)
+    status varchar(20) default 'pending'
 );
 
 create table admin_alert (

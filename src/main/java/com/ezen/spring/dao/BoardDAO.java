@@ -25,4 +25,10 @@ public interface BoardDAO {
 
 	long getLastId();
 
+	int updateCommQty(@Param("bno")long bno, @Param("i")int i);
+
+	int updateFileQty(@Param("bno")long bno, @Param("i")int i);
+
+	int updateLikeQty(@Param("bno")long bno, @Param("i")int i);
+
 }

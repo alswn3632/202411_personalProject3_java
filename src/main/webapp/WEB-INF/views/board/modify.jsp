@@ -72,6 +72,9 @@
 	<jsp:include page="../layout/footer.jsp"></jsp:include>
 	
 	<!-- Script Line -->
+	<script type="text/javascript">
+		let bno = "${bvo.id }";
+	</script>
 	<script type="text/javascript" src="/resources/js/boardRegister.js"></script>
 	<script type="text/javascript" src="/resources/js/boardModify.js"></script>
 </body>
