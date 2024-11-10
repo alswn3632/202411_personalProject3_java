@@ -24,8 +24,6 @@
 		<script type="text/javascript">
 			uno = "${authid }";
 			nickname = "${authnick}";
-			
-			console.log(nickname + uno);
 		</script>
 	</sec:authorize>
 	<jsp:include page="../layout/header.jsp"></jsp:include>
@@ -54,7 +52,8 @@
 		
 		<!-- 좋아요 버튼 -->
 		<button type="button" class="btn btn-outline-danger likeBtn" id="likeBtn">추천</button>
-		
+		<!-- 신고 버튼 -->
+		<button type="button" class="btn btn-outline-warning reportBtn" id="reportBtn">신고</button>	
 		<!-- file upload 표시 라인 -->
 		<div class="mb-3">
 			<ul class="list-group list-group-flush">
@@ -120,9 +119,11 @@
 	<!-- Script Line -->
 	<script type="text/javascript">
 		let bno = "${bvo.id }";
+		let buno = "${bvo.userId}"
 	</script>
 	<script type="text/javascript" src="/resources/js/boardDetailLike.js"></script>
 	<script type="text/javascript" src="/resources/js/boardDetailComment.js"></script>
+	<script type="text/javascript" src="/resources/js/boardDetailReport.js"></script>
 	<script type="text/javascript">
 		printLikeBox(bno, uno);
 		spreadCommentList(bno);

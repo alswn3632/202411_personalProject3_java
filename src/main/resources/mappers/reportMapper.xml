@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.spring.dao.ReportDAO">
+	<!-- report -->
+	<insert id="register">
+		insert into report(board_id, user_id, reason) values(#{boardId}, #{userId}, #{reason})
+	</insert>
+	
+	<select id="isReported" resultType="int">
+		select count(id) from report where board_id = #{boardId} and user_id = #{userId}
+	</select>
+	
+	<select id="findReport" resultType="long">
+		select board_id from report where status = 'pending' group by board_id having count(*) >= 5;
+	</select>
+	
+	<update id="statusReview">
+		update report set status = 'under_review' where board_id = #{bno}
+	</update>
+	
+	<!-- alert -->
+	<insert id="insertAlert">
+		insert into alert (alert_msg, board_id) values (#{alertMsg}, #{boardId});
+	</insert>
+	
+</mapper>

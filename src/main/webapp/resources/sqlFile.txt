@@ -78,16 +78,7 @@ update board b join (select board_id, count(*) as has_file from file group by bo
 -- like_qty 업데이트: likes 테이블과 JOIN하여 계산
 update board b join (select board_id, count(*) as like_qty from likes group by board_id) l on b.id = l.board_id set b.like_qty = l.like_qty;
 
-
-
-
-
-
-
-
-
-
-
+--신고(report)추가
 create table report (
     id bigint auto_increment primary key,    
     board_id bigint not null,                    
@@ -97,7 +88,8 @@ create table report (
     status varchar(20) default 'pending'
 );
 
-create table admin_alert (
+--관리자알림(alert)추가
+create table alert (
     id bigint auto_increment primary key,      
     alert_msg text not null,                 
     reg_date datetime default now(),
