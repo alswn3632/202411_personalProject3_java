@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.ezen.spring.domain.AlertVO;
 import com.ezen.spring.domain.ReportVO;
 
 public interface ReportDAO {
@@ -17,5 +18,11 @@ public interface ReportDAO {
 	void insertAlert(@Param("boardId")long boardId, @Param("alertMsg")String alertMsg);
 
 	void statusReview(Long bno);
+
+	List<AlertVO> getAlertList();
+
+	int adminDel(long id);
+
+	int adminHod(long id);
 
 }

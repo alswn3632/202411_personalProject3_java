@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'MyCustomFont';  /* 폰트 이름 */
+    src: url("./font/nanum-square-round/NanumSquareRoundR.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'MyCustomFont'; /* 기본 폰트로 설정 */
+}
+
+.headerBox{
+	width: 100%;
+	height: 120px;
+	background-color: #FEF9F2;
+	
+	display: flex;            
+    justify-content: center;   
+    align-items: center;      
+}
+
+.headerBox > a{
+	text-decoration: none;
+}
+
+.headerBox > a > h1{
+	font-weight: bold;
+	font-size: 50px;
+	color: #4A4947;
+}
+
+.headerBox > a > h1 > img{
+	width: 50px;
+	height: 50px;	
+}
+
+.navBox{
+	padding: 20px 0;
+	padding-bottom: 35px;
+}
+
+.navBox a{
+	text-decoration: none;
+	font-weight: bold;
+	color: #4A4947;
+}
+
+.navBoc a:hover {
+	color: #B17457;
+}
+
+.midTitle{
+	width: 100%;
+	/* text-align: center; */
+}
+
+
+

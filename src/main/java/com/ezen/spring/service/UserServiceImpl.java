@@ -1,9 +1,13 @@
 package com.ezen.spring.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ezen.spring.dao.ReportDAO;
 import com.ezen.spring.dao.UserDAO;
+import com.ezen.spring.domain.AlertVO;
 import com.ezen.spring.domain.UserVO;
 
 import lombok.RequiredArgsConstructor;
@@ -15,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UserServiceImpl implements UserService{
 	
 	private final UserDAO udao;
+	private final ReportDAO rdao;
 
 	@Transactional
 	@Override
@@ -30,6 +35,18 @@ public class UserServiceImpl implements UserService{
 		}
 		
 		return isOk;
+	}
+
+	@Override
+	public List<AlertVO> getAlertList() {
+		// TODO Auto-generated method stub
+		return rdao.getAlertList();
+	}
+
+	@Override
+	public List<UserVO> getUserList() {
+		// TODO Auto-generated method stub
+		return udao.getUserList();
 	}
 
 

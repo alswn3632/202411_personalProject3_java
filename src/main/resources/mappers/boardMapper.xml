@@ -47,6 +47,10 @@
 		update board set like_qty = like_qty + #{i} where id = #{bno}
 	</update>
 	
+	<update id="adminDel">
+		update board set is_del = 'Y' where id = #{bno}
+	</update>
+	
 	<!-- search 동적 쿼리 -->
 	<sql id="search">
 		<if test="type != null">

@@ -15,7 +15,7 @@
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 		
 	<div class="container-md">
-		<h3>User Register Page!!</h3>
+		<h3 class="midTitle">✏️글쓰기</h3>
 		<hr>
 		<form action="/board/insert" method="post" enctype="multipart/form-data">
 			<div class="mb-3">

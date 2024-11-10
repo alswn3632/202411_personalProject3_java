@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+.searchBox{
+  	float: right;
+	width: 30%;
+	margin-bottom: 10px;
+}
+
+.selectBox{
+	width: 100px;
+	margin-right: 5px;
+	outline: none;
+}
+
+.wordBox{
+	width: 200px;
+	outline: none;
+}
+
+.searchBtn{
+	border: none;
+	outline: none;
+	background-color: #B17457;
+	width: 150px;
+	
+}
+
+.searchBtn:hover {
+	background-color: #B17457;
+	
+}
+
+.listBox{
+	margin-bottom: 25px;
+}
+
+thead{
+	background-color: #D8D2C2;
+}
+
+.titleLine{
+	width: 50%;
+}

@@ -25,4 +25,16 @@
 		insert into alert (alert_msg, board_id) values (#{alertMsg}, #{boardId});
 	</insert>
 	
+	<select id="getAlertList" resultType="com.ezen.spring.domain.AlertVO">
+		select * from alert order by id desc
+	</select>
+	
+	<update id="adminDel">
+		update alert set status = 'approved' where id = #{id}
+	</update>
+	
+	<update id="adminHod">
+		update alert set status = 'rejected' where id = #{id}
+	</update>
+	
 </mapper>

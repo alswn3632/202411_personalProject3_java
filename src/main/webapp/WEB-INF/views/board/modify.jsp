@@ -16,7 +16,7 @@
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 		
 	<div class="container-md">
-		<h3>User Modify Page!!</h3>
+		<h3 class="midTitle">✏️수정하기</h3>
 		<hr>
 		<form action="/board/update" method="post" enctype="multipart/form-data">
 			<div class="mb-3">

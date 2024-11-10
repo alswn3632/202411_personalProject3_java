@@ -27,10 +27,11 @@
 		</script>
 	</sec:authorize>
 	<jsp:include page="../layout/header.jsp"></jsp:include>
-		
+
 	<div class="container-md">
-		<h3>User Detail Page!!</h3>
+		<h3 class="midTitle">✏️${bvo.title }</h3>
 		<hr>
+		
 		<!-- Board Detail Line -->
 		<div class="mb-3">
 			<label for="n" class="form-label">no</label>

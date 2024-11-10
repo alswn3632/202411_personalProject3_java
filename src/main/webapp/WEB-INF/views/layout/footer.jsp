@@ -2,10 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-	<div class="container-md" style="margin-bottom: 25px;">
-		<hr>
-		<br>
-		Footer Line Position
+	<div class="sticky-bottom">
+		
 	</div>
 </body>
 </html>

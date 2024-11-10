@@ -19,4 +19,6 @@ public interface UserDAO {
 
 	int updateLastLogin(String authUsername);
 
+	List<UserVO> getUserList();
+
 }

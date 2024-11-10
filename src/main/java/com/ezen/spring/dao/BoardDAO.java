@@ -31,4 +31,6 @@ public interface BoardDAO {
 
 	int updateLikeQty(@Param("bno")long bno, @Param("i")int i);
 
+	int adminDel(long bno);
+
 }

@@ -20,6 +20,10 @@
 		update user set log_date = now() where username = #{username}
 	</update>
 	
+	<select id="getUserList" resultType="com.ezen.spring.domain.UserVO">
+		select * from user order by id desc
+	</select>
+	
 	
 	<!-- auth 테이블 -->
 	<insert id="registerAuthInit">
