@@ -14,8 +14,8 @@
 		<h3 class="midTitle">🔒대시보드</h3>
 		<hr>
 		
-		<a href="/user/list"><button type ="button" class="btn btn-primary">유저목록</button></a>
-		<a href="/user/alert"><button type ="button" class="btn btn-primary">신고알림</button></a>
+		<a href="/user/list"><button type ="button" class="btn btn-success">유저목록</button></a>
+		<a href="/user/alert"><button type ="button" class="btn btn-danger">신고알림</button></a>
 		
 	</div>
 		

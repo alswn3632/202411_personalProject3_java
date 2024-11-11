@@ -23,12 +23,12 @@
 				  <input type="text" class="form-control" name="password" id="p" placeholder="pwd...">
 				</div>
 				<!-- 로그인 실패시 errMsg 출력할 장소 -->
-<%-- 				<c:if test="${param.errMsg ne null }">
+				<c:if test="${param.errMsg ne null }">
 					<div class="text-danger mb-3">
 						${param.errMsg }
 					</div>
-				</c:if> --%>
-				<button type="submit" class="btn btn-primary">로그인</button>
+				</c:if>
+				<button type="submit" class="btn btn-secondary">로그인</button>
 			</form>
 	</div>
 		

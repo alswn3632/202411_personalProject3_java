@@ -13,11 +13,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @Setter
 @Getter
-public class BoardDTO {
+public class UserDTO {
 	
-	private BoardVO bvo;
-	private List<FileVO> flist;
-	
-	
-	
+	private UserVO uvo;
+	private List<BoardVO> blist;
 }

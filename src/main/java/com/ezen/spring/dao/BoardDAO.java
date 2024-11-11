@@ -33,4 +33,8 @@ public interface BoardDAO {
 
 	int adminDel(long bno);
 
+	int readCount(long id);
+
+	List<BoardVO> getbList(long id);
+
 }

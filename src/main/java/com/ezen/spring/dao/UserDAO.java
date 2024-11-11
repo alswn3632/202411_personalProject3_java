@@ -21,4 +21,6 @@ public interface UserDAO {
 
 	List<UserVO> getUserList();
 
+	UserVO getOneUser(long id);
+
 }

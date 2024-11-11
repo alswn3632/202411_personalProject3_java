@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.midImg {
+    display: flex;
+    flex-wrap: wrap;  /* 자식 요소들이 부모 영역을 넘어설 경우 자동으로 줄 바꿈 */
+    width: 100%;
+}
+
+.imgBox {
+    display: flex;
+    flex-direction: column;  /* 이미지와 버튼을 세로로 배치 */
+    align-items: center;  /* 이미지와 버튼을 중앙 정렬 */
+    margin-right: 10px;
+}
+
+.imgBox .file-x {
+    width: 60px;
+    margin-top: 5px;
+}
+
+.btnArea{
+	display: flex;
+	justify-content: space-between;
+}

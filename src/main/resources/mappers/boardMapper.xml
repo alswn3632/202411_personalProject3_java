@@ -51,6 +51,14 @@
 		update board set is_del = 'Y' where id = #{bno}
 	</update>
 	
+	<update id="readCount">
+		update board set read_qty = read_qty + 1 where id = #{id}
+	</update>
+	
+	<select id="getbList" resultType="com.ezen.spring.domain.BoardVO">
+		select * from board where is_del = 'N' and user_id = #{id} order by id desc
+	</select>
+	
 	<!-- search 동적 쿼리 -->
 	<sql id="search">
 		<if test="type != null">

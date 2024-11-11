@@ -47,7 +47,7 @@ document.addEventListener('change', (e)=>{
         // 여러개의 첨부파일이 모두 검증을 통과해야만 register 버튼이 활성화
         // isOk 누적곱으로 여러 검증과정을 지날것
         let isOk = 1;
-        let ul = `<ul class="list-group list-group-flush">`;
+        let ul = `<ul class="list-group list-group-flush"><label class="form-label">* 추가된 파일</label>`;
         // 개별 파일에 대한 검증, 결과 출력
         for(let file of fileObj){
             let validResult = fileValidation(file.name, file.size);

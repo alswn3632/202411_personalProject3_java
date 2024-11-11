@@ -28,7 +28,7 @@ public class FileSweeper {
 	private final String BASE_PATH = "D:\\_myproject\\_java\\_fileUpload\\";
 	
 	// @ : 스케줄기록 cron 방식 => 초, 분, 시, 일, 월, 요일, 년도(생략가능)
-	@Scheduled(cron="00 15 13 * * *") // 매일 23시 59분 59초에 실행
+	@Scheduled(cron="00 00 10 * * *") // 매일 23시 59분 59초에 실행
 	public void fileSweeper() {
 		log.info(">>>> FileSweeper Running Start > {}", LocalDateTime.now());
 		

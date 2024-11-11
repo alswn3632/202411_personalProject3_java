@@ -5,9 +5,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ezen.spring.dao.BoardDAO;
 import com.ezen.spring.dao.ReportDAO;
 import com.ezen.spring.dao.UserDAO;
 import com.ezen.spring.domain.AlertVO;
+import com.ezen.spring.domain.BoardVO;
+import com.ezen.spring.domain.UserDTO;
 import com.ezen.spring.domain.UserVO;
 
 import lombok.RequiredArgsConstructor;
@@ -20,6 +23,7 @@ public class UserServiceImpl implements UserService{
 	
 	private final UserDAO udao;
 	private final ReportDAO rdao;
+	private final BoardDAO bdao;
 
 	@Transactional
 	@Override
@@ -47,6 +51,15 @@ public class UserServiceImpl implements UserService{
 	public List<UserVO> getUserList() {
 		// TODO Auto-generated method stub
 		return udao.getUserList();
+	}
+
+	@Override
+	public UserDTO getUdto(long id) {
+		UserVO uvo = udao.getOneUser(id);
+		List<BoardVO> blist = bdao.getbList(id);
+		
+		UserDTO udto = new UserDTO(uvo, blist);
+		return udto;
 	}
 
 

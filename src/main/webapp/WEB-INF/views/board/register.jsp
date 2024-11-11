@@ -19,29 +19,26 @@
 		<hr>
 		<form action="/board/insert" method="post" enctype="multipart/form-data">
 			<div class="mb-3">
-				<label for="t" class="form-label">제목</label>
+				<label for="t" class="form-label">* 제목</label>
 				<input type="text" class="form-control" name="title" id="t" placeholder="title..">
 			</div>
+			<input type="hidden" class="form-control" name="writer" id="t" value="${authnick }" readonly>
+			<input type="hidden" class="form-control" name="userId" value="${authid }" >
 			<div class="mb-3">
-				<label for="t" class="form-label">작성자</label>
-				<input type="text" class="form-control" name="writer" id="t" value="${authnick }" readonly>
-				<input type="hidden" class="form-control" name="userId" value="${authid }" >
-			</div>
-			<div class="mb-3">
-				<label for="t" class="form-label">내용</label>
-				<input type="text" class="form-control" name="content" id="t" placeholder="content..">
+				<label for="c" class="form-label">* 내용</label>
+				<textarea class="form-control" name="content" id="c" rows="3"></textarea>
 			</div>
 			
+			<!-- 첨부파일 표시 라인 추가 -->
+			<div class="mb-3" id="fileZone"></div>
 			<!-- 첨부파일 입력 라인 추가 -->
 			<div class="mb-3">
 				<input type="file" class="form-control" name="files" id="file" multiple="multiple" style="display:none" accept="image/*">
 				<label class="input-group-text" for="file" style="display:none"></label>
-			    <button type="button" class="btn btn-primary" id="trigger">파일 업로드</button>
+			    <button type="button" class="btn btn-secondary" id="trigger">파일 업로드</button>
 			</div>
-			<!-- 첨부파일 표시 라인 추가 -->
-			<div class="mb-3" id="fileZone"></div>
-			
-			<button type="submit" class="btn btn-primary" id="regBtn">등록</button>
+			<hr>
+			<button type="submit" class="btn btn-secondary" id="regBtn">등록</button>
 		</form>		
 	</div>
 		

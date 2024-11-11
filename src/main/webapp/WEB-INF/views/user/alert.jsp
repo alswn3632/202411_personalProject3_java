@@ -21,7 +21,7 @@
 					<th>Content</th>
 					<th>BoardId</th>
 					<th>Status</th>
-					<th>.</th>
+					<th>Answer</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -29,11 +29,11 @@
 					<tr>
 						<td>${avo.id }</td>
 						<td>${avo.alertMsg }</td>
-						<td><a href="/board/detail?id=${avo.boardId }">이동</a></td>
+						<td><a href="/board/detail?id=${avo.boardId }" style="text-decoration: none;">[${avo.boardId }] 이동하기</a></td>
 						<td>${avo.status }</td>
 						<td>
-							<button type="button" class="btn btn-secondary delBtn" data-bno=${avo.boardId } data-id=${avo.id }>삭제</button> 
-							<button type="button" class="btn btn-secondary hodBtn" data-bno=${avo.boardId } data-id=${avo.id }>보류</button>
+							<button type="button" class="btn btn-outline-danger delBtn" data-bno=${avo.boardId } data-id=${avo.id } style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">삭제</button> 
+							<button type="button" class="btn btn-outline-success hodBtn" data-bno=${avo.boardId } data-id=${avo.id } style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">보류</button>
 						</td>
 					</tr>
 				</c:forEach>

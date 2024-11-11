@@ -19,7 +19,7 @@ public class ReportHandler {
     private final ReportDAO rdao;
 
     // 매일 오전 9시, 오후 9시에 실행
-    @Scheduled(cron = "00 16 18 * * *")
+    @Scheduled(cron = "00 00 10 * * *")
     public void reportHandelr() {
 		log.info(">>>> ReportHandelr Running Start > {}", LocalDateTime.now());
 

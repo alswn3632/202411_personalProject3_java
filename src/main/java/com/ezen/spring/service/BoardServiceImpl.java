@@ -153,4 +153,10 @@ public class BoardServiceImpl implements BoardService{
 		return isOk;
 	}
 
+	@Override
+	public int readCount(long id) {
+		// TODO Auto-generated method stub
+		return bdao.readCount(id);
+	}
+
 }

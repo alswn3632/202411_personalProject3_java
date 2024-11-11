@@ -1,5 +1,7 @@
 package com.ezen.spring.controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -64,6 +66,18 @@ public class BoardController {
 //		PagingVO pgvo = new PagingVO();
 		List<BoardVO> list = bsv.getList(pgvo);
 		
+		String today = LocalDate.now().toString();
+		// 2024-11-11
+		for(BoardVO bvo : list) {
+			// 2024-11-11 09:37:30
+			String bDate = bvo.getRegDate().substring(0, bvo.getRegDate().indexOf(" "));
+			if(today.equals(bDate)) {
+				bvo.setCustomTime(bvo.getRegDate().substring(bvo.getRegDate().indexOf(" ")+1, bvo.getRegDate().indexOf(" ")+6));
+			}else {
+				bvo.setCustomTime(bDate);
+			}
+		}
+		
 		int totalCount = bsv.getTotal(pgvo);
 		PagingHandler ph = new PagingHandler(totalCount, pgvo);
 		
@@ -76,6 +90,11 @@ public class BoardController {
 	@GetMapping({"/detail","/modify"})
 	public void detail(HttpServletRequest request, Model m, long id) {
 		String path = request.getServletPath();
+		
+		if(path.equals("/board/detail")) {
+			int isOk = bsv.readCount(id);
+		}
+		
 		BoardDTO bdto = bsv.getDetail(id);
 		m.addAttribute("bdto", bdto);
 	}

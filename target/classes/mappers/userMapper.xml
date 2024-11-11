@@ -24,6 +24,9 @@
 		select * from user order by id desc
 	</select>
 	
+	<select id="getOneUser" resultType="com.ezen.spring.domain.UserVO">
+		select * from user where id = #{id}
+	</select>
 	
 	<!-- auth 테이블 -->
 	<insert id="registerAuthInit">

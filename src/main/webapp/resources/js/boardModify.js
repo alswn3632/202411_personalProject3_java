@@ -10,8 +10,8 @@ document.addEventListener('click', (e)=>{
             if(result == '1'){
                 console.log("파일 삭제 성공");
                 // 삭제 후 화면에서 사라지게하기
-                let li = e.target.closest('li');
-                li.remove();
+                let div = e.target.closest('div');
+                div.remove();
             }else{
                 console.log("파일 수정 실패!");
             }

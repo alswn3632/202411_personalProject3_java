@@ -40,4 +40,8 @@ public class BoardVO {
 	private long readQty;
 	private int hasFile;
 	
+	// 화면용!!!!!
+	private String customTime;
+	
+	
 }

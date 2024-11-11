@@ -30,6 +30,8 @@ public interface BoardService {
 
 	int delLike(long bno, long uno);
 
+	int readCount(long id);
+
 
 
 }

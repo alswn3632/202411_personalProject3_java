@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ezen.spring.domain.AlertVO;
+import com.ezen.spring.domain.UserDTO;
 import com.ezen.spring.domain.UserVO;
 import com.ezen.spring.service.UserService;
 
@@ -76,5 +77,29 @@ public class UserController {
 		List<AlertVO> arList = usv.getAlertList();
 		m.addAttribute("arList", arList);
 	}
+	
+	@GetMapping({"/detail", "/modify"})
+	public void detail(HttpServletRequest request, long id, Model m) {
+		log.info(">>>> userId > {}", id);
+		
+		String path = request.getServletPath();
+		UserDTO udto = usv.getUdto(id);		
+		
+		if(path.equals("/user/detail")) {
+			m.addAttribute("udto", udto);
+			
+		}else if(path.equals("/user/modify")) {
+			UserVO uvo = udto.getUvo();
+			m.addAttribute("uvo", uvo);
+		}
+		
+	}
+	
+	@PostMapping("/update")
+	public void update(UserVO uvo) {
+		log.info(">>>> uvo > {}", uvo);
+	}
+
+	
 
 }

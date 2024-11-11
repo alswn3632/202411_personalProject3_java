@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.midArea{
+	display: flex;
+	justify-content: space-between;
+}
+
+.box{
+	width: 600px;
+}

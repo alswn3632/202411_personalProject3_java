@@ -1,31 +1,6 @@
 // Detail 페이지 
 console.log("boardDetailComment.js in!!");
 console.log("boardId:" + bno + ", userId:" + uno);
-// 연동되어랏
-// JSP 댓글 등록 이벤트
-// document.getElementById('cmtAddBtn').addEventListener('click', ()=>{
-//     const cmtText = document.getElementById('cmtText');
-//     const cmtWriter = document.getElementById('cmtWriter');
-//     if(cmtText.value == null || cmtText.value == ''){
-//         alert('댓글을 입력해주세요!');
-//         cmtText.focus();
-//         return false;
-//     }
-//     let cmtData = {
-//         boardId : bno,
-//         userId : uno,
-//         writer : cmtWriter.innerText,
-//         content : cmtText.value
-//     }
-//     postCommentToServer(cmtData).then(result =>{
-//         if(result == '1'){
-//             alert("댓글 등록 성공");
-//             cmtText.value = "";
-//             // 댓글 출력
-//             spreadCommentList(bno)
-//         }
-//     })
-// });
 
 // JSP 댓글 출력 함수
 function spreadCommentList(bno, page=1){
@@ -41,13 +16,16 @@ function spreadCommentList(bno, page=1){
             for(let cvo of result.cmtList){
                 let li = `<li class="list-group-item" data-id=${cvo.id}>`;
                 li += `<div class="ms-2 me-auto">`;
-                li += `<div class="fw-bold"><span class="cmtWriterMod">${cvo.writer}</span> <span class="badge text-bg-primary rounded-pill">${cvo.regDate}</span>`;
+                li += `<div class="fw-bold"><span class="cmtWriterMod">${cvo.writer}</span>`;
                 li += `</div>${cvo.content}</div>`;
-                li += `<button type="button" class="btn btn-secondary btn-sm mod" data-id=${cvo.id} data-bs-toggle="modal" data-bs-target="#myModal">수정</button> `;
-                li += `<button type="button" class="btn btn-secondary btn-sm del" data-id=${cvo.id}>삭제</button>`;
-                li += `<button type="button" class="btn btn-secondary btn-sm ans" data-id=${cvo.id}>답글</button>`;
+                li += `<div class="button-container"><button type="button" class="btn btn-outline-secondary btn-sm ans" data-id=${cvo.id}>답글</button>`;
+                if (cvo.userId == uno) {
+                    li += `<button type="button" class="btn btn-outline-secondary btn-sm mod" data-id=${cvo.id} data-bs-toggle="modal" data-bs-target="#myModal">수정</button>`;
+                    li += `<button type="button" class="btn btn-outline-secondary btn-sm del" data-id=${cvo.id}>삭제</button>`;
+                }     
+                li += `</div>`       
                 // 답글 출력
-                li += `<li class="list-group-item" id="printArea${cvo.id}" data-id=${cvo.id}></li>`;
+                li += `<li class="list-group-item printArea" id="printArea${cvo.id}" data-id=${cvo.id}></li>`;
                 // 답글용 input창
                 li += `<div class="input-group mb-3" id="inputArea${cvo.id}" data-id=${cvo.id}></div>`;
 
@@ -68,7 +46,7 @@ function spreadCommentList(bno, page=1){
                 moreBtn.style.visibility = 'hidden'; // 다시 숨김 처리
             }
         }else{
-            ul.innerHTML = `<li class="list-group-item">Comment List Empty</li>`;
+            ul.innerHTML = `<li class="list-group-item">댓글이 없습니다. 첫 댓글을 써보세요!!</li>`;
         }
     });
 }
@@ -82,12 +60,18 @@ function spreadCommentListAns(cno){
             for(let cvo of result){
                 console.log(cvo);
                 let str = `<div class="ms-2 me-auto">`;
-                str += `<div class="fw-bold"><span class="cmtWriterMod">${cvo.writer}</span> <span class="badge text-bg-primary rounded-pill">${cvo.regDate}</span>`;
+                str += `<div class="fw-bold"><span class="cmtWriterMod">${cvo.writer}</span>`;
                 str += `</div>${cvo.content}</div>`;
-                str += `<button type="button" class="btn btn-secondary btn-sm mod" data-id=${cvo.id} data-isParent=${cvo.parentId} data-bs-toggle="modal" data-bs-target="#myModal">수정</button> `;
-                str += `<button type="button" class="btn btn-secondary btn-sm del" data-id=${cvo.id}>삭제</button>`;
+                str += `<div class="button-container">`
+                if (cvo.userId == uno) {
+                    str += `<button type="button" class="btn btn-outline-secondary btn-sm mod" data-id=${cvo.id} data-isParent=${cvo.parentId} data-bs-toggle="modal" data-bs-target="#myModal">수정</button>`;
+                    str += `<button type="button" class="btn btn-outline-secondary btn-sm del" data-id=${cvo.id}>삭제</button>`;
+                }
+                str += `</div>`
                 div.innerHTML += str;
             }
+        }else if(result.length == 0){
+            document.getElementById(`printArea${cno}`).remove();
         }
     });
 }
@@ -162,7 +146,7 @@ document.addEventListener('click', (e)=>{
             div.innerHTML = "";  // 내용이 있으면 지우고
         } else {
             let str = "";
-            str += `<span class="input-group-text" id="cmtWriter2">테스터</span>`;
+            str += `<span class="input-group-text" id="cmtWriter2">${nickname}</span>`;
             str += `<input type="text" class="form-control" id="cmtText2" placeholder="Add Comment..." aria-label="Username" aria-describedby="basic-addon1">`;
             str += `<button class="btn btn-outline-secondary addBtn2" type="button" data-id=${id}>등록</button>`; 
             div.innerHTML = str;
