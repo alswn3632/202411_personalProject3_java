@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빵냥이의 부엌 : Detail</title>
 <jsp:include page="../layout/header.jsp"></jsp:include>
 <link rel="stylesheet" href="/resources/css/boardDetail.css">
 </head>
@@ -30,7 +30,7 @@
 		</script>
 	</sec:authorize>
 
-	<div class="container-md">
+	<div class="container-md" style="min-height: 500px;">
 		<hr>
 		<div class="midInfo">
 			<span>${bvo.writer }</span>

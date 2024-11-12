@@ -10,7 +10,7 @@
 <body>
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 		
-	<div class="container-md">
+	<div class="container-md" style="min-height: 500px;">
 		<h3>User ?? Page!!</h3>
 		<hr>
 	</div>

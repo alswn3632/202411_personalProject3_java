@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빵냥이의 부엌 : 게시판</title>
 <jsp:include page="../layout/header.jsp"></jsp:include>
 <link rel="stylesheet" href="/resources/css/boardList.css">
 </head>
 <body>
 		
-	<div class="container-md">
+	<div class="container-md" style="min-height: 500px;">
 		<h3 class="midTitle">📝게시판</h3>
 		<hr>
 		

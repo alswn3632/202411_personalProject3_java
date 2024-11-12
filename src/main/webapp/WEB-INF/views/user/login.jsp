@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빵냥이의 부엌 : 로그인</title>
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 		
-	<div class="container-md">
+	<div class="container-md" style="min-height: 500px;">
 		<h3 class="midTitle">👨‍👩‍👦로그인</h3>
 		<hr>
 			<form action="/user/login" method="post">

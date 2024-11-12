@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빵냥이의 부엌 : 마이페이지</title>
 <jsp:include page="../layout/header.jsp"></jsp:include>
 <link rel="stylesheet" href="/resources/css/userDetail.css">
 </head>
 <body>
 	<c:set value="${udto.uvo }" var="uvo"></c:set>
 	<c:set value="${udto.blist }" var="blist"></c:set>
-	<div class="container-md">
+	<div class="container-md" style="min-height: 500px;">
 		<h3>❤️마이페이지</h3>
 		<hr>
 		

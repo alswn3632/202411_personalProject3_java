@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빵냥이의 부엌 : 글쓰기</title>
 </head>
 <body>
 	<sec:authentication property="principal.uvo.nickname" var="authnick"/>		
@@ -14,7 +14,7 @@
 	
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 		
-	<div class="container-md">
+	<div class="container-md" style="min-height: 500px;">
 		<h3 class="midTitle">✏️글쓰기</h3>
 		<hr>
 		<form action="/board/insert" method="post" enctype="multipart/form-data">

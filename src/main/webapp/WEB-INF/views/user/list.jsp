@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빵냥이의 부엌 : 관리자</title>
 </head>
 <body>
 	<jsp:include page="../layout/header.jsp"></jsp:include>
 		
-	<div class="container-md">
+	<div class="container-md" style="min-height: 500px;">
 		<h3 class="midTitle">📝회원 리스트</h3>
 		<hr>
 		

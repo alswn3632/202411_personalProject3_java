@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빵냥이의 부엌 : Modify</title>
 <jsp:include page="../layout/header.jsp"></jsp:include>
 <link rel="stylesheet" href="/resources/css/boardModify.css">
 </head>
@@ -16,7 +16,7 @@
 	<c:set value="${bdto.flist }" var="flist"></c:set>
 	
 		
-	<div class="container-md">
+	<div class="container-md" style="min-height: 500px;">
 		<h3 class="midTitle">✏️수정하기</h3>
 		<hr>
 		<form action="/board/update" method="post" enctype="multipart/form-data">

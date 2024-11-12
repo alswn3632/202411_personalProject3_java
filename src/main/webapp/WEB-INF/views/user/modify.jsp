@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>빵냥이의 부엌 : 회원정보수정</title>
 <jsp:include page="../layout/header.jsp"></jsp:include>
 <link rel="stylesheet" href="/resources/css/userModify.css">
 </head>
 <body>
 		
-	<div class="container-md">
+	<div class="container-md" style="min-height: 500px;">
 		<h3 class="midTitle">👨‍👩회원정보수정</h3>
 		<hr>
 		<form action="/user/modify" method="post">
