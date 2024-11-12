@@ -18,6 +18,9 @@ public class PagingVO {
 	// search 변수 포함
 	private String type;
 	private String keyword;
+	
+	// 유저 정보를 위한
+	private long userId;
 
 	//생성자 - 초기값을 위한 임의 설정
 	public PagingVO() {

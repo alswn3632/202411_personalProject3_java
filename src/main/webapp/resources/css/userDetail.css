@@ -8,3 +8,14 @@
 .box{
 	width: 600px;
 }
+
+.listBox{
+	width: 100%;
+}
+
+.rowf{
+	align-items: center;
+	padding: 30px 0;
+	border-bottom: none;
+}
+

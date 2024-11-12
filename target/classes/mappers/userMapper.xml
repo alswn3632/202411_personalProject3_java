@@ -28,13 +28,29 @@
 		select * from user where id = #{id}
 	</select>
 	
+	<select id="check" resultType="int">
+		select count(*) from user where username = #{username}
+	</select>
+	
+	<update id="modify">
+		update user set username = #{username}, email = #{email}, nickname = #{nickname} where id = #{id}
+	</update>
+	
+	<update id="modifyPwd">
+		update user set password = #{password} where id = #{id}
+	</update>
+	
+	<select id="getUser" resultType="com.ezen.spring.domain.UserVO">
+		select * from user where id = #{id}
+	</select>
+	
 	<!-- auth 테이블 -->
 	<insert id="registerAuthInit">
 		insert into auth(user_id, auth) values(#{uno}, 'ROLE_USER')
 	</insert>
 	
 	<select id="selectAuths" resultType="com.ezen.spring.domain.AuthVO">
-		select a.* from user u join auth a on u.id = a.user_id where u.username = #{username};
+		select a.* from user u join auth a on u.id = a.user_id where u.username = #{username}
 	</select>
 		
 </mapper>

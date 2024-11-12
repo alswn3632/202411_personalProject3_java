@@ -35,6 +35,9 @@ public interface BoardDAO {
 
 	int readCount(long id);
 
-	List<BoardVO> getbList(long id);
+	List<BoardVO> getbList(PagingVO pgvo);
+
+	int getUserTotal(PagingVO pgvo);
+	
 
 }

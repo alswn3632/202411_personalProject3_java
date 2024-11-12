@@ -23,4 +23,12 @@ public interface UserDAO {
 
 	UserVO getOneUser(long id);
 
+	int check(String username);
+
+	int modify(UserVO uvo);
+
+	int modifyPwd(UserVO uvo);
+
+	UserVO getUser(long id);
+
 }

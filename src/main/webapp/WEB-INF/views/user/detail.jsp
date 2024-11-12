@@ -17,6 +17,8 @@
 		<hr>
 		
 		<div class="midArea">
+		
+			<!-- 왼쪽라인 -->
 			<div class="box">
 				<h5>내 정보 보기</h5>
 				<hr>
@@ -27,7 +29,10 @@
 				<label for="e" class="form-label">* 이메일</label>
 				<input type="text" class="form-control" name="email" id="e" value="${uvo.email }" readonly><br>
 				<a href="/user/modify?id=${uvo.id }"><button type="button" class="btn btn-outline-secondary">내정보수정</button></a>
+				<a href="/user/modifyPwd?id=${uvo.id }"><button type="button" class="btn btn-outline-secondary">비밀번호변경</button></a>
 			</div>
+			
+			<!-- 오른쪽라인 -->
 			<div class="box">
 				<h5>내가 쓴 글</h5>
 				<hr>
@@ -56,8 +61,41 @@
 						  	</tr>
 						</c:forEach>
 					</tbody>
+					<tfoot>
+						<tr><td colspan="5" class="rowf">
+							<div>
+								<nav aria-label="Page navigation example">
+									<ul class="pagination justify-content-center">
+										<!-- 이전 -->
+										<li class="page-item ${ph.prev eq false? 'disabled' :  ''}">
+											<a class="page-link" href="/user/detail?userId=${uvo.id }&pageNo=${ph.startPage-1 }&qty=${ph.pgvo.qty }" aria-label="Previous">
+										    	<span aria-hidden="true">이전</span>
+										    </a>
+										</li>
+										    
+										<!-- 페이지네이션 번호 -->
+										<c:forEach begin="${ph.startPage }" end="${ph.endPage }" var="i">
+											<li class="page-item ${ph.pgvo.pageNo eq i? 'active' : ''}">
+										    	<a class="page-link" href="/user/detail?userId=${uvo.id }&pageNo=${i }&qty=${ph.pgvo.qty }">${i }</a>
+											</li>
+										</c:forEach>
+										    
+										<!-- 다음 -->
+										<li class="page-item ${ph.next eq false? 'disabled' :  ''}">
+											<a class="page-link" href="/user/detail?userId=${uvo.id }&pageNo=${ph.endPage+1 }&qty=${ph.pgvo.qty }" aria-label="Next">
+												<span aria-hidden="true">다음</span>
+										    </a>
+										</li>
+									</ul>
+								</nav>
+							</div>
+						</td></tr>
+					</tfoot>
 				</table>
 			</div>
+			
+			
+			
 		</div>
 	</div>
 		

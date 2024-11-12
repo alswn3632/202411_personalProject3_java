@@ -50,7 +50,7 @@
 					<a class="nav-link" href="/board/register">✏️글쓰기</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/user/detail?id=${authid }">❤️${authnick }님</a>
+					<a class="nav-link" href="/user/detail?userId=${authid }">❤️${authnick }님</a>
 				</li>
 				
 				<!-- 로그인 + 관리자 전용 메뉴 -->

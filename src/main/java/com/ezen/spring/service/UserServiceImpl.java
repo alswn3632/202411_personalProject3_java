@@ -10,6 +10,7 @@ import com.ezen.spring.dao.ReportDAO;
 import com.ezen.spring.dao.UserDAO;
 import com.ezen.spring.domain.AlertVO;
 import com.ezen.spring.domain.BoardVO;
+import com.ezen.spring.domain.PagingVO;
 import com.ezen.spring.domain.UserDTO;
 import com.ezen.spring.domain.UserVO;
 
@@ -53,14 +54,55 @@ public class UserServiceImpl implements UserService{
 		return udao.getUserList();
 	}
 
+//	@Override
+//	public UserDTO getUdto(long id) {
+//		UserVO uvo = udao.getOneUser(id);
+//		List<BoardVO> blist = bdao.getbList(id);
+//		
+//		UserDTO udto = new UserDTO(uvo, blist);
+//		return udto;
+//	}
+
 	@Override
-	public UserDTO getUdto(long id) {
+	public UserDTO getUdto(PagingVO pgvo) {
+		long id = pgvo.getUserId();
 		UserVO uvo = udao.getOneUser(id);
-		List<BoardVO> blist = bdao.getbList(id);
-		
+		List<BoardVO> blist = bdao.getbList(pgvo);
 		UserDTO udto = new UserDTO(uvo, blist);
 		return udto;
 	}
+	
+	@Override
+	public int check(String username) {
+		// TODO Auto-generated method stub
+		return udao.check(username);
+	}
+
+	@Override
+	public int modify(UserVO uvo) {
+		// TODO Auto-generated method stub
+		return udao.modify(uvo);
+	}
+
+	@Override
+	public int modifyPwd(UserVO uvo) {
+		// TODO Auto-generated method stub
+		return udao.modifyPwd(uvo);
+	}
+
+
+	@Override	
+	public UserVO getUser(long id) {
+		// TODO Auto-generated method stub
+		return udao.getUser(id);
+	}
+
+	@Override
+	public int getUserTotal(PagingVO pgvo) {
+		// TODO Auto-generated method stub
+		return bdao.getUserTotal(pgvo);
+	}
+
 
 
 }

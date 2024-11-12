@@ -74,7 +74,7 @@ public class BoardController {
 			if(today.equals(bDate)) {
 				bvo.setCustomTime(bvo.getRegDate().substring(bvo.getRegDate().indexOf(" ")+1, bvo.getRegDate().indexOf(" ")+6));
 			}else {
-				bvo.setCustomTime(bDate);
+				bvo.setCustomTime(bDate.substring(bDate.indexOf("-")+1));
 			}
 		}
 		
